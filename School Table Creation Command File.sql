@@ -114,7 +114,7 @@ CREATE TABLE `school`.`instructor` (
 
 /*UPDATE*/
 ALTER TABLE `school`.`instructor`
-ADD COLUMN `sex` VARCHAR(8) NOT NULL CHECK (sex IN ('Male' 'Female'))AFTER `last_name`;
+ADD COLUMN `sex` VARCHAR(8) NOT NULL CHECK (sex IN ('Male', 'Female'))AFTER `last_name`;
 
 /*UPDATE*/
 ALTER TABLE `school`.`instructor` 

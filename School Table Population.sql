@@ -106,11 +106,37 @@ SELECT * FROM campus_location;
 * Add data to the Instructor Table
 ********************************************************/
 INSERT INTO instructor (first_name, last_name, sex, contact_id, salary, department_id, office_location)
+VALUE ('Lynwood',  'Sligh', 'Female', 1, 65000, (SELECT department.department_id from department WHERE department_name = 'Language'), (RAND() * (10 - 1) + 1)),
+	('Torrie',  'Brook', 'Male', 2, 65000, (SELECT department.department_id from department WHERE department_name = 'Math & Statistics'), (RAND() * (10 - 1) + 1)),
+    ('John',  'Moore', 'Male', 3, 65000, (SELECT department.department_id from department WHERE department_name = 'Science'), (RAND() * (10 - 1) + 1)),
+    ('Cindy',  'Brook', 'Female', 4, 65000, (SELECT department.department_id from department WHERE department_name = 'Science'), (RAND() * (10 - 1) + 1)),
+    ('Kueku',  'Appu', 'Male', 5, 65000, (SELECT department.department_id from department WHERE department_name = 'Engineering'), (RAND() * (10 - 1) + 1)),
+    ('Dalin',  'Roberts', 'Male', 6, 65000, (SELECT department.department_id from department WHERE department_name = 'Computer Science'), (RAND() * (10 - 1) + 1)),
+    ('Maria',  'Elizabeth', 'Female', 7, 65000, (SELECT department.department_id from department WHERE department_name = 'Computer Information Technology'), (RAND() * (10 - 1) + 1)),
+    ('Marcu',  'Hommy', 'Male', 8, 65000, (SELECT department.department_id from department WHERE department_name = 'Arts'), (RAND() * (10 - 1) + 1)),
+    ('Dave',  'Moolar', 'Male', 9, 65000, (SELECT department.department_id from department WHERE department_name = 'Engineering'), (RAND() * (10 - 1) + 1)),
+    ('Lidya',  'Smith', 'Female', 10, 65000, (SELECT department.department_id from department WHERE department_name = 'Computer Science'), (RAND() * (10 - 1) + 1));
+ 
+/*test*/
+SELECT * FROM instructor;
 
 /*******************************************************
-*
+* Add data to the Instructor Table
 ********************************************************/
+INSERT INTO major(major_name, catalog_year, department_id)
+VALUE ('Software Engineering', '2020-03-20', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
+	('Computer Science', '2020-04-19', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
+    ('Mechanical Engineerin', '2020-05-20', (SELECT department_id FROM department WHERE department_name = 'Engineering')),
+    ('Music', '2020-03-18', (SELECT department_id FROM department WHERE department_name = 'Arts')),
+    ('English', '2020-03-17', (SELECT department_id FROM department WHERE department_name = 'Language')),
+    ('Cyber Security', '2020-10-20', (SELECT department_id FROM department WHERE department_name = 'Computer Information Technology')),
+    ('Biology', '2021-03-20', (SELECT department_id FROM department WHERE department_name = 'Science')),
+    ('Geography', '2019-03-20', (SELECT department_id FROM department WHERE department_name = 'Science')),
+    ('Statistics', '2018-03-20', (SELECT department_id FROM department WHERE department_name = 'Math & Statistics')),
+    ('Applied Tech', '2019-03-21', (SELECT department_id FROM department WHERE department_name = 'Computer Information Technology'));
 
+/*Test*/
+SELECT * FROM major;
 
 /*******************************************************
 *
