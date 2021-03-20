@@ -182,14 +182,69 @@ VALUE (1, 7, '2021-05-05', '2021-09-05'),
 SELECT * FROM avalaible_class; 
   
 /*******************************************************
-*
+* ADD data to the student table
 ********************************************************/
+/*ADD  10 more address*/
+INSERT INTO address (street_address, address.city,   address.state, address.country, address.postal_code)
+VALUES ('21 Moore E', 'Lewis', 'Washington', 'US','98377'),
+		('41 Harmony AV', 'Lewis', 'Washington', 'US','98377'),
+		('20 Ferreira rd', 'Lewis', 'Washington', 'US','98377'),
+		('3 White st', 'Lewis', 'Washington', 'US','98377'),
+		('17 Reynolds Av', 'Lewis', 'Washington', 'US','98377'),
+		('35 Shelby rd', 'Lewis', 'Washington', 'US','98377'),
+		('23 Groom st', 'Lewis', 'Washington', 'US','98377'),
+		('51 CrossRoads',  'Lewis', 'Washington', 'US','98377'),
+		('47 Smiths', 'Lewis', 'Washington', 'US','98377'),
+		('101 Banana Rd', 'Lewis', 'Washington', 'US','98377');
+        
+/*Add 10 more contacts to refer to those addresses*/
+INSERT INTO contact (phone, email, last_updated, address_id)
+VALUES ('456-456-789', 'z@a.com', now(), (SELECT address_id FROM address WHERE street_address = '21 Moore E')),
+		('123-456-789', 'z@b.com', now(), (SELECT address_id FROM address WHERE street_address = '41 Harmony AV')),
+		('789-456-789', 'z@c.com', now(), (SELECT address_id FROM address WHERE street_address = '20 Ferreira rd')),
+		('985-456-789', 'z@d.com', now(), (SELECT address_id FROM address WHERE street_address = '3 White st')),
+		('156-456-789', 'z@e.com', now(), (SELECT address_id FROM address WHERE street_address = '17 Reynolds Av')),
+		('753-456-789', 'z@f.com', now(), (SELECT address_id FROM address WHERE street_address = '35 Shelby rd')),
+		('369-456-789', 'z@g.com', now(), (SELECT address_id FROM address WHERE street_address = '23 Groom st')),
+		('781-456-789', 'z@h.com', now(), (SELECT address_id FROM address WHERE street_address = '51 CrossRoads')),
+		('156-456-789', 'z@w.com', now(), (SELECT address_id FROM address WHERE street_address = '47 Smiths')),
+		('352-456-789', 'z@q.com', now(), (SELECT address_id FROM address WHERE street_address = '101 Banana Rd'));
+        
+/*Create the student data*/
+INSERT INTO student(last_name, first_name, birth_day, sex, major_id, minor_id, marital_status, contact_id)
+VALUE('Bruce', 'Marlon', '1994-12-23', 'Male', (SELECT major_id  FROM major WHERE major_name = 'Software Engineering'), 
+									(SELECT minor_id FROM minor WHERE minor_name = 'Auto Mechanics' ), 'Single', (SELECT contact_id FROM contact WHERE email = 'z@a.com')),
+	 
+     ('Ferreira', 'Filipe', '1995-04-23', 'Male', (SELECT major_id FROM major WHERE major_name = 'English'), 
+									(SELECT minor_id FROM minor WHERE minor_name = 'Spanish' ), 'Married', (SELECT contact_id FROM contact WHERE email = 'z@b.com')),
+	 
+     ('Rodrigues', 'Brice', '1993-04-23', 'Male', (SELECT major_id  FROM major WHERE major_name = 'Biology'), 
+									(SELECT minor_id FROM minor WHERE minor_name = 'Statistics' ), 'Single', (SELECT contact_id FROM contact WHERE email = 'z@c.com')),
+	 
+     ('Vennom', 'Joice', '1993-07-25', 'Female', (SELECT major_id FROM major WHERE major_name = 'Mechanical Engineerin'), 
+									(SELECT minor_id FROM minor WHERE minor_name = 'Animal Science' ), 'Single', (SELECT contact_id FROM contact WHERE email = 'z@d.com')),
+ 	 
+     ('Smith', 'Amanda', '1990-06-17', 'Female', (SELECT major_id FROM major WHERE major_name = 'Geography'), 
+									(SELECT minor_id FROM minor WHERE minor_name = 'Weather Cast' ), 'Married', (SELECT contact_id FROM contact WHERE email = 'z@e.com')),      
+	
+    ('White', 'Emily', '1991-08-17', 'Female', (SELECT major_id FROM major WHERE major_name = 'Music'), 
+									NULL, 'Married', (SELECT contact_id  FROM contact WHERE email = 'z@g.com')),  
+	
+    ('Robert', 'Marcia', '1992-10-07', 'Female', (SELECT major_id FROM major WHERE major_name = 'Cyber Security'), 
+									NULL, 'Single', (SELECT contact_id FROM contact WHERE email = 'z@h.com')),  
+	
+    ('Brigham', 'Webert', '1993-03-24', 'Male', (SELECT major_id FROM major WHERE major_name = 'Statistics'), 
+									NULL, 'Single', (SELECT contact_id FROM contact WHERE email = 'z@w.com')),
+	
+    ('Zuck', 'Matio', '1993-03-24', 'Male', (SELECT major_id FROM major WHERE major_name = 'Computer Science'), 
+									NULL, 'Single', (SELECT contact_id FROM contact WHERE email = 'z@q.com'));
 
+/*test students*/
+SELECT * FROM student;
 
 /*******************************************************
 *
 ********************************************************/
-
 
 /*******************************************************
 *
