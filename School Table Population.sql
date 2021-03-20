@@ -42,8 +42,16 @@ SELECT * FROM contact;
 /*******************************************************
 * Add date to the Departament Table
 ********************************************************/
-
-
+INSERT INTO department (department_name, department_budget)
+VALUE ('Computer Infomration Technology', 500000),
+		('Computer Science', 1000000),
+        ('Engineering', 800000),
+        ('Arts', 400000),
+        ('Science', 2000000),
+        ('Math & Statistics', 1000000),
+        ('Language', 400000);
+/*Test*/
+SELECT * FROM department;
 /*******************************************************
 *
 ********************************************************/
