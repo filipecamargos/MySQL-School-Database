@@ -4,9 +4,19 @@
 *******************************************************/
 
 /*******************************************************
-*
+* Add date to the Address Table
 ********************************************************/
-
+INSERT INTO address (address.street_address, address.city,   address.state, address.country, address.postal_code)
+VALUES ('21 116th Street E', 'Lewis', 'Washington', 'US','98377'),
+		('41 1st Avenue', 'Lewis', 'Washington', 'US','98377'),
+		('20 2nd Avenue', 'Lewis', 'Washington', 'US','98377'),
+		('3 2nd Avenue S', 'Lewis', 'Washington', 'US','98377'),
+		('17 43rd Avenue SW', 'Lewis', 'Washington', 'US','98377'),
+		('35 Baise Lane', 'Lewis', 'Washington', 'US','98377'),
+		('23 Beryl Road', 'Lewis', 'Washington', 'US','98377'),
+		('51 Boyd Road',  'Lewis', 'Washington', 'US','98377'),
+		('47 Broken Street E ', 'Lewis', 'Washington', 'US','98377'),
+		('101 Broken 2nd Street E ', 'Lewis', 'Washington', 'US','98377');
 
 /*******************************************************
 *
