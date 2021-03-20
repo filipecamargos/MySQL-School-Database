@@ -139,15 +139,48 @@ VALUE ('Software Engineering', '2020-03-20', (SELECT department_id FROM departme
 SELECT * FROM major;
 
 /*******************************************************
-*
+* Add data to the Minor table
 ********************************************************/
+INSERT INTO minor(minor_name, catalog_year, department_id)
+VALUE ('Programing', '2020-03-20', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
+	('Machine Learning', '2020-04-19', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
+    ('Auto Mechanics', '2020-05-20', (SELECT department_id FROM department WHERE department_name = 'Engineering')),
+    ('Dance', '2020-03-18', (SELECT department_id FROM department WHERE department_name = 'Arts')),
+    ('Spanish', '2020-03-17', (SELECT department_id FROM department WHERE department_name = 'Language')),
+    ('Data Base Development', '2020-10-20', (SELECT department_id FROM department WHERE department_name = 'Computer Information Technology')),
+    ('Animal Science', '2021-03-20', (SELECT department_id FROM department WHERE department_name = 'Science')),
+    ('Weather Cast', '2019-03-20', (SELECT department_id FROM department WHERE department_name = 'Science')),
+    ('Statistics', '2018-03-20', (SELECT department_id FROM department WHERE department_name = 'Math & Statistics')),
+    ('Computer Systems', '2019-03-21', (SELECT department_id FROM department WHERE department_name = 'Computer Information Technology'));
 
+/*Test*/
+SELECT * FROM minor;
 
 /*******************************************************
-*
+* Populate the Avaible Class table
 ********************************************************/
+INSERT INTO avalaible_class(class_id, instructor_id, start_date, end_date)
+VALUE (1, 7, '2021-05-05', '2021-09-05'),
+	(3, 1, '2021-05-05', '2021-09-05'),
+    (4, 2, '2021-05-05', '2021-09-05'),
+    (5, 8, '2021-05-05', '2021-09-05'),
+    (6, 2, '2021-05-05', '2021-09-05'),
+    (7, 5, '2021-05-05', '2021-09-05'),
+	(7, 9, '2021-05-05', '2021-09-05'),
+    (8, 6, '2021-05-05', '2021-09-05'),
+    (8, 10, '2021-05-05', '2021-09-05'),
+    (9, 1, '2021-05-05', '2021-09-05'),
+    (10, 7, '2021-05-05', '2021-09-05'),
+    (11, 6, '2021-05-05', '2021-09-05'),
+    (11, 10, '2021-05-05', '2021-09-05'),
+    (12, 3, '2021-05-05', '2021-09-05'),
+    (12, 4, '2021-05-05', '2021-09-05'),
+    (13, 3, '2021-05-05', '2021-09-05'),
+    (13, 4, '2021-05-05', '2021-09-05');
 
-
+/*test*/
+SELECT * FROM avalaible_class; 
+  
 /*******************************************************
 *
 ********************************************************/
