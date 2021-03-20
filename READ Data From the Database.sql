@@ -35,7 +35,15 @@ SELECT i.first_name, c.class_title, c.class_id, i.instructor_id, d.department_na
 	ORDER BY c.class_id;
     
 /**************************************************************
-* Query to know what classes are avalable, who are the 
+* Query using JOINs to know what classes are avalable, who are the 
 * teachers and from what department
 ***************************************************************/
-SELECT 
+SELECT c.class_title, concat(i.first_name, ' ', i.last_name) as instructor, d.department_name, a.avalaible_class_id
+	FROM avalaible_class a
+	LEFT JOIN class c
+    ON a.avalaible_class_id = c.class_id
+    LEFT JOIN instructor i 
+    ON a.instructor_id = i.instructor_id
+    LEFT JOIN department d
+    ON i.department_id = d.department_id
+WHERE class_title IS NOT NULL;
