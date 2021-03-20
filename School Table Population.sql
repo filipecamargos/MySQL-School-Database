@@ -75,14 +75,27 @@ VALUE ("Intro to Technology", 'CIT 101', 100, 3, (select department_id FROM depa
 SELECT * FROM class;
 
 /*******************************************************
-*
+* Add data to the Campus location Table
 ********************************************************/
+INSERT INTO campus_location(building, room_number)
+VALUE ('SMITH', 101),
+	  ('STC', 221),
+	  ('Robert', 107),
+	  ('Robert', 103),
+	  ('Robert', 301),
+	  ('Emma Loof', 221),
+	  ('George Bush', 105),
+	  ('SMITH', 225),
+	  ('SMITH', 335),
+      ('Emma Loof', 331);
 
+/*Test*/
+SELECT * FROM campus_location;
 
 /*******************************************************
-*
+* Add data to the Instructor Table
 ********************************************************/
-
+INSERT INTO instructor (first_name, last_name, sex, contact_id, salary, department_id, office_location)
 
 /*******************************************************
 *
