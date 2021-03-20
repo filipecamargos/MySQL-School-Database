@@ -87,7 +87,17 @@ VALUE ('SMITH', 101),
 	  ('George Bush', 105),
 	  ('SMITH', 225),
 	  ('SMITH', 335),
-      ('Emma Loof', 331);
+      ('Emma Loof', 331),
+      ('SMITH', 103),
+	  ('STC', 281),
+	  ('Robert', 108),
+	  ('Robert', 107),
+	  ('Robert', 371),
+	  ('Emma Loof', 228),
+	  ('George Bush', 107),
+	  ('SMITH', 282),
+	  ('SMITH', 345),
+      ('Emma Loof', 375);
 
 /*Test*/
 SELECT * FROM campus_location;
