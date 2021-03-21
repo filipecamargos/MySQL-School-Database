@@ -22,7 +22,7 @@ CREATE TABLE `school`.`student` (
   
 /*Update*/
 ALTER TABLE `school`.`student` 
-ADD COLUMN `sex` VARCHAR(8) NOT NULL CHECK (sex IN ('Male' 'Female'))AFTER `birth_day`;
+ADD COLUMN `sex` VARCHAR(8) NOT NULL CHECK (sex IN ('Male', 'Female'))AFTER `birth_day`;
 
 /***************************
 *Create the Major table 

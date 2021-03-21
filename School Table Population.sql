@@ -243,9 +243,23 @@ VALUE('Bruce', 'Marlon', '1994-12-23', 'Male', (SELECT major_id  FROM major WHER
 SELECT * FROM student;
 
 /*******************************************************
-*
+* ADD data to the student table
 ********************************************************/
+INSERT into assigment(title, class_id, publisher_id, created_date, assigment_repo)
+VALUE ('Data Base Final Project', 10, 7, now(), 'Some/URL/RepoAssigment'),
+	('Programing Mid Term', 8, 6, now(), 'Some/URL/RepoAssigment'),
+    ('English Paper', 3, 1, now(), 'Some/URL/RepoAssigment'),
+    ('Biology Researcch', 13, 4, now(), 'Some/URL/RepoAssigment'),
+    ('Geography Research', 12, 4, now(), 'Some/URL/RepoAssigment'),
+    ('Math Week 01', 6, 2, now(), 'Some/URL/RepoAssigment'),
+    ('Algorithms: Buble Sorting', 11, 10, now(), 'Some/URL/RepoAssigment'),
+    ('Animal Research', 13, 3, now(), 'Some/URL/RepoAssigment'),
+    ('Mechanical Issue', 7, 9, now(), 'Some/URL/RepoAssigment'),
+    ('Piano Audit', 5, 8, now(), 'Some/URL/RepoAssigment'),
+    ('Portuguese Vocabulary', 9, 1, now(), 'Some/URL/RepoAssigment');
+
+SELECT * FROM assigment;
 
 /*******************************************************
-*
+* Add 
 ********************************************************/
