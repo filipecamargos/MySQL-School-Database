@@ -77,7 +77,7 @@ SELECT * FROM class;
 /*******************************************************
 * Add data to the Campus location Table
 ********************************************************/
-INSERT INTO campus_location(building, room_number)
+INSERT INTO campus_location (building, room_number)
 VALUE ('SMITH', 101),
 	  ('STC', 221),
 	  ('Robert', 107),
@@ -123,7 +123,7 @@ SELECT * FROM instructor;
 /*******************************************************
 * Add data to the Instructor Table
 ********************************************************/
-INSERT INTO major(major_name, catalog_year, department_id)
+INSERT INTO major (major_name, catalog_year, department_id)
 VALUE ('Software Engineering', '2020-03-20', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
 	('Computer Science', '2020-04-19', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
     ('Mechanical Engineerin', '2020-05-20', (SELECT department_id FROM department WHERE department_name = 'Engineering')),
@@ -141,7 +141,7 @@ SELECT * FROM major;
 /*******************************************************
 * Add data to the Minor table
 ********************************************************/
-INSERT INTO minor(minor_name, catalog_year, department_id)
+INSERT INTO minor (minor_name, catalog_year, department_id)
 VALUE ('Programing', '2020-03-20', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
 	('Machine Learning', '2020-04-19', (SELECT department_id FROM department WHERE department_name = 'Computer Science')),
     ('Auto Mechanics', '2020-05-20', (SELECT department_id FROM department WHERE department_name = 'Engineering')),
@@ -159,7 +159,7 @@ SELECT * FROM minor;
 /*******************************************************
 * Populate the Avaible Class table
 ********************************************************/
-INSERT INTO avalaible_class(class_id, instructor_id, start_date, end_date)
+INSERT INTO avalaible_class (class_id, instructor_id, start_date, end_date)
 VALUE (1, 7, '2021-05-05', '2021-09-05'),
 	(3, 1, '2021-05-05', '2021-09-05'),
     (4, 2, '2021-05-05', '2021-09-05'),
@@ -211,7 +211,7 @@ VALUES ('456-456-789', 'z@a.com', now(), (SELECT address_id FROM address WHERE s
 		('352-456-789', 'z@q.com', now(), (SELECT address_id FROM address WHERE street_address = '101 Banana Rd'));
         
 /*Create the student data*/
-INSERT INTO student(last_name, first_name, birth_day, sex, major_id, minor_id, marital_status, contact_id)
+INSERT INTO student (last_name, first_name, birth_day, sex, major_id, minor_id, marital_status, contact_id)
 VALUE('Bruce', 'Marlon', '1994-12-23', 'Male', (SELECT major_id  FROM major WHERE major_name = 'Software Engineering'), 
 									(SELECT minor_id FROM minor WHERE minor_name = 'Auto Mechanics' ), 'Single', (SELECT contact_id FROM contact WHERE email = 'z@a.com')),
 	 
@@ -245,7 +245,7 @@ SELECT * FROM student;
 /*******************************************************
 * ADD data to the student table
 ********************************************************/
-INSERT into assigment(title, class_id, publisher_id, created_date, assigment_repo)
+INSERT into assigment (title, class_id, publisher_id, created_date, assigment_repo)
 VALUE ('Data Base Final Project', 10, 7, now(), 'Some/URL/RepoAssigment'),
 	('Programing Mid Term', 8, 6, now(), 'Some/URL/RepoAssigment'),
     ('English Paper', 3, 1, now(), 'Some/URL/RepoAssigment'),
@@ -258,8 +258,54 @@ VALUE ('Data Base Final Project', 10, 7, now(), 'Some/URL/RepoAssigment'),
     ('Piano Audit', 5, 8, now(), 'Some/URL/RepoAssigment'),
     ('Portuguese Vocabulary', 9, 1, now(), 'Some/URL/RepoAssigment');
 
+/*Test*/
 SELECT * FROM assigment;
 
 /*******************************************************
-* Add 
+* Add data to the Enrollment table 
 ********************************************************/
+INSERT INTO enrollment (avalaible_class_id, student_id, enrollment_date, grade)
+VALUE ((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'Statistics'), 1, now(), NULL),
+        
+        ((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'Data Base Development'), 2, now(), NULL),
+        
+		((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'English Foudation'), 3, now(), NULL),
+
+		((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'Algebra'), 4, now(), NULL),        
+ 
+ 		((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'Programing Intro'), 5, now(), NULL),
+
+		((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'Geography Intro'), 6, now(), NULL), 
+ 
+ 		((SELECT a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+		WHERE c.class_title = 'Algarithms'), 7, now(), NULL);
+	
+/*Test*/
+SELECT * FROM enrollment;

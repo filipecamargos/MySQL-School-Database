@@ -45,5 +45,21 @@ SELECT c.class_title, concat(i.first_name, ' ', i.last_name) as instructor, d.de
     LEFT JOIN instructor i 
     ON a.instructor_id = i.instructor_id
     LEFT JOIN department d
-    ON i.department_id = d.department_id
+    ON i.department_id = d.department_id;
 WHERE class_title IS NOT NULL;
+
+/************************************ 
+* USING JOIN and FILTER to Return 
+* the avalaible class id based
+* on the class name using right Join
+*************************************/
+SELECT c.class_title, a.avalaible_class_id
+		FROM avalaible_class a
+        LEFT JOIN class c
+        ON c.class_id = a.avalaible_class_id
+WHERE c.class_title = 'Piano';
+
+/************************************ 
+* Determine what major a student is in
+* and what department offer it
+*************************************/
