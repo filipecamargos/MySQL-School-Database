@@ -123,4 +123,49 @@ SELECT a.title, c.class_title, concat(i.first_name, ' ', i.last_name),
 			ON a.class_id = c.class_id
 		LEFT JOIN instructor i
 			ON a.publisher_id = i.instructor_id;
+            
+/************************************************************
+* Update the student table by change a last name
+************************************************************/
+UPDATE student 
+	SET first_name  = 'John',
+		last_name = 'Dough'
+    WHERE student_id = 1;
+
+SELECT first_name, last_name
+	FROM student 
+    WHERE student_id = 1;
+
+/************************************************************
+*  Update the address and then and do a JOIN between the 
+* student, contact and address to check the result
+*************************************************************/
+UPDATE address
+	SET street_address = 'Julius Cezar',
+		city = 'Alexandria',
+        state = 'Rome',
+        country = 'Marcedonia',
+        postal_code = '589657'
+	WHERE address_id =  (SELECT address_id
+							FROM contact 
+							WHERE contact_id = (SELECT contact_id
+												FROM student 
+												WHERE student_id = 1));
+                                                
+/*Test Result*/
+SELECT concat(s.first_name, ' ', s.last_name) name, a.street_address, 
+				a.city, a.state, a.country, a.postal_code
+	FROM student s
+		JOIN contact c 
+			ON s.contact_id = c.contact_id
+		JOIN address a 
+			ON a.address_id = c.address_id
+WHERE s.student_id = 1;
+
+
+
+
+
+
+
     
