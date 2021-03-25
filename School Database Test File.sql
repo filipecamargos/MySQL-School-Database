@@ -1,6 +1,7 @@
 /********************************************
-* This file contains some of the operations
-* used to read data from the database
+* THIS FILE CONTAINS THE OPERATION TO TEST
+* DATABASE BASED ON THE DATA THAT HAS BEING
+* INSERTED ON THE School Table Population
 *********************************************/
 
 /*************************************************************
@@ -45,8 +46,8 @@ SELECT c.class_title, concat(i.first_name, ' ', i.last_name) as instructor, d.de
     LEFT JOIN instructor i 
     ON a.instructor_id = i.instructor_id
     LEFT JOIN department d
-    ON i.department_id = d.department_id;
-WHERE class_title IS NOT NULL;
+    ON i.department_id = d.department_id
+    WHERE class_title IS NOT NULL;
 
 /************************************ 
 * USING JOIN and FILTER to Return 
