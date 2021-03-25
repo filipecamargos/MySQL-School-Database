@@ -116,13 +116,14 @@ SELECT concat(s.first_name, ' ', s.last_name) as name,
 * they are and what intructor created them as well
 * the date it was created and the repository
 **************************************************/
-SELECT a.title, c.class_title, concat(i.first_name, ' ', i.last_name),
+SELECT a.title, c.class_title, concat(i.first_name, ' ', i.last_name) as name,
 		a.created_date, a.assigment_repo
 	FROM assigment a
 		LEFT JOIN class c
 			ON a.class_id = c.class_id
 		LEFT JOIN instructor i
-			ON a.publisher_id = i.instructor_id;
+			ON a.publisher_id = i.instructor_id
+	ORDER BY a.title;
             
 /************************************************************
 * Update the student table by change a last name
@@ -160,12 +161,4 @@ SELECT concat(s.first_name, ' ', s.last_name) name, a.street_address,
 			ON s.contact_id = c.contact_id
 		JOIN address a 
 			ON a.address_id = c.address_id
-WHERE s.student_id = 1;
-
-
-
-
-
-
-
-    
+WHERE s.student_id = 1;    
