@@ -60,7 +60,23 @@ SELECT c.class_title, a.avalaible_class_id
         ON c.class_id = a.avalaible_class_id
 WHERE c.class_title = 'Piano';
 
-/************************************ 
-* Determine what major a student is in
-* and what department offer it
-*************************************/
+/*****************************************
+* Use the contact, address, major, minor,
+* major department, and the student table
+* to get information on the student
+******************************************/
+SELECT concat(s.first_name, ' ', s.last_name) as student, s.birth_day,
+	c.phone, concat(a.street_address, ' ', a.city) as address,
+    ma.major_name, mi.minor_name, d.department_name as department
+FROM student s
+	LEFT JOIN contact c
+		ON s.contact_id = c.contact_id
+	LEFT JOIN address a
+		ON c.address_id = a.address_id
+	LEFT JOIN major ma
+		ON s.major_id = ma.major_id
+	LEFT JOIN department d
+		ON ma.department_id = d.department_id
+	LEFT JOIN minor mi
+		ON s.minor_id = mi.minor_id;
+
