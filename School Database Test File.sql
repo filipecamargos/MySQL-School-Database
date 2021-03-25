@@ -25,14 +25,17 @@ SELECT c.class_id, c.class_title, d.department_name
  /**************************************************************
 * Multiples LEFT JOIN with the instructor, class, and department
 * table to check what class each professor can teach and what 
-* department they are from
+* department they are from and the location
 **************************************************************/   
-SELECT i.first_name, c.class_title, c.class_id, i.instructor_id, d.department_name, c.department_id, i.office_location
+SELECT i.first_name, c.class_title, d.department_name, 
+		concat(l.building, ' ', l.room_number) office
 	FROM instructor i
     LEFT JOIN class c 
 		ON i.department_id = c.department_id
     LEFT JOIN department d 
 		ON c.department_id = d.department_id
+	LEFT JOIN campus_location l
+		ON i.office_location = l.location_id
 	ORDER BY c.class_id;
     
 /**************************************************************
@@ -80,3 +83,44 @@ FROM student s
 	LEFT JOIN minor mi
 		ON s.minor_id = mi.minor_id;
 
+/*******************************************
+* Check what classes are in a department
+* using the class and the departament table
+********************************************/
+SELECT c.class_title, d.department_name
+FROM class c 
+	LEFT JOIN department d
+		ON c.department_id = d.department_id;
+        
+/************************************************************
+* Check what students class enrollment information using
+* student class, available_class, student, intructor,
+* campus_location and enrollamment table
+************************************************************/
+SELECT concat(s.first_name, ' ', s.last_name) as name, 
+		c.class_title, concat(i.first_name, ' ', i.last_name) instructor,
+        e.enrollment_date, concat(l.building, ' ', l.room_number)
+	FROM enrollment e
+		RIGHT JOIN student s
+			ON s.student_id = e.student_id
+        RIGHT JOIN avalaible_class a
+			ON a.avalaible_class_id = e.avalaible_class_id
+		RIGHT JOIN class c
+			ON c.class_id = a.avalaible_class_id
+		RIGHT JOIN instructor i
+			ON a.instructor_id = i.instructor_id
+	WHERE s.first_name IS NOT NULL;
+
+/*************************************************
+* Check the assigments created, for what classe 
+* they are and what intructor created them as well
+* the date it was created and the repository
+**************************************************/
+SELECT a.title, c.class_title, concat(i.first_name, ' ', i.last_name),
+		a.created_date, a.assigment_repo
+	FROM assigment a
+		LEFT JOIN class c
+			ON a.class_id = c.class_id
+		LEFT JOIN instructor i
+			ON a.publisher_id = i.instructor_id;
+    
