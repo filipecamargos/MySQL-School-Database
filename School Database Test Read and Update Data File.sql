@@ -94,12 +94,12 @@ FROM class c
         
 /************************************************************
 * Check what students class enrollment information using
-* student class, available_class, student, intructor,
+* student, class, available_class, student, intructor,
 * campus_location and enrollamment table
 ************************************************************/
 SELECT concat(s.first_name, ' ', s.last_name) as name, 
 		c.class_title, concat(i.first_name, ' ', i.last_name) instructor,
-        e.enrollment_date, concat(l.building, ' ', l.room_number)
+        e.enrollment_date
 	FROM enrollment e
 		RIGHT JOIN student s
 			ON s.student_id = e.student_id
